@@ -27,8 +27,14 @@ public class Main implements MouseListener, ActionListener {
 
         guia = new JMenu("Paleta");
         barra.add(guia);
+
         item = new JMenuItem("Retângulo");
         item.setActionCommand(Paleta.RETANGULO);
+        guia.add(item);
+        item.addActionListener(paleta);
+
+        item = new JMenuItem("Porta AND");
+        item.setActionCommand(Paleta.AND);
         guia.add(item);
         item.addActionListener(paleta);
 
