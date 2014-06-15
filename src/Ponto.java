@@ -1,5 +1,5 @@
 class Ponto {
-    protected int x, y;
+    private int x, y;
 
     Ponto(int x, int y) {
         this.x = x;
@@ -51,6 +51,18 @@ class Ponto {
             dis = -dis;
         }
         return dis;
+    }
+
+    int xesq(Ponto q) {
+        int x0 = this.x;
+        if(q.x < x0) return q.x;
+        return x0;
+    }
+
+    int ysup(Ponto q) {
+        int y0 = this.y;
+        if(q.y < y0) return q.y;
+        return y0;
     }
 
     int x0(int raio){

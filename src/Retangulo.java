@@ -16,25 +16,11 @@ public class Retangulo {
     }
 
     int x() {
-        int x1 = this.ponto1.x;
-        int x2 = this.ponto2.x;
-        if (x1 > x2) {
-            return x2;
-        }
-        else {
-            return x1;
-        }
+        return this.ponto1.xesq(this.ponto2);
     }
 
     int y() {
-        int y1 = this.ponto1.y;
-        int y2 = this.ponto2.y;
-        if (y1 > y2) {
-            return y2;
-        }
-        else {
-            return y1;
-        }
+       return this.ponto1.ysup(this.ponto2);
     }
 
     int largura(){
