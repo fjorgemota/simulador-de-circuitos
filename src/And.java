@@ -1,8 +1,8 @@
 class And extends PortaLogica{
 	And(Ponto a, Ponto b){
 		super(a, b);
-		
 	}
+
 	public Entrada[] pegaEntradas() {
 		Entrada[] entradasAnd = new Entrada[2];
 		entradasAnd[0] = new Entrada(100, 50);
@@ -14,4 +14,12 @@ class And extends PortaLogica{
 		saidasAnd[0] = new Saida(300, 75);
 		return saidasAnd;	
 	}
+
+    int largura() {
+        return 89;
+    }
+
+    int altura() {
+        return 53;
+    }
 }

@@ -5,4 +5,8 @@ public abstract class PortaLogica extends Retangulo{
 
     public abstract Entrada[] pegaEntradas();
     public abstract Saida[] pegaSaidas();
+
+    abstract int largura();
+
+    abstract int altura();
 }
