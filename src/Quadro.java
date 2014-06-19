@@ -13,6 +13,9 @@ public class Quadro extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g); // paintComponent redesenha o painel
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        g.setColor(Color.BLACK);
         for (int i = 0; i < fig.size(); i++) {
             fig.get(i).reproduzir(g);
         }
