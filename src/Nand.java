@@ -5,14 +5,14 @@ public class Nand extends PortaLogica{
 
     public Entrada[] pegaEntradas(){
         Entrada[] entradasNand = new Entrada[2];
-        entradasNand[0] = new Entrada(251, 71);
-        entradasNand[1] = new Entrada(251, 111);
+        entradasNand[0] = new Entrada(30, 25);
+        entradasNand[1] = new Entrada(30, 45);
         return entradasNand;
     }
 
     public Saida[] pegaSaidas(){
         Saida[] saidasNand = new Saida[1];
-        saidasNand[0] = new Saida(325, 93);
+        saidasNand[0] = new Saida(48, 35);
         return saidasNand;
     }
     int largura() {

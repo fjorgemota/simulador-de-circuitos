@@ -5,13 +5,13 @@ class NOT extends PortaLogica{
 
 	public Entrada[] pegaEntradas() {
 		Entrada[] entradasNOT = new Entrada[2];
-		entradasNOT[0] = new Entrada(261, 70);
-		entradasNOT[1] = new Entrada(261, 100);
+		entradasNOT[0] = new Entrada(30, 25);
+		entradasNOT[1] = new Entrada(30, 45);
 		return entradasNOT;
 	}
 	public Saida[] pegaSaidas() {
 		Saida[] saidasNOT = new Saida[1];
-		saidasNOT[0] = new Saida(461, 85);
+		saidasNOT[0] = new Saida(48, 35);
 		return saidasNOT;	
 	}
 

@@ -5,13 +5,13 @@ class OR extends PortaLogica{
 
 	public Entrada[] pegaEntradas() {
 		Entrada[] entradasOR = new Entrada[2];
-		entradasOR[0] = new Entrada(175, 70);
-		entradasOR[1] = new Entrada(175, 100);
+		entradasOR[0] = new Entrada(30, 25);
+		entradasOR[1] = new Entrada(30, 45);
 		return entradasOR;
 	}
 	public Saida[] pegaSaidas() {
 		Saida[] saidasOR = new Saida[1];
-		saidasOR[0] = new Saida(375, 85);
+		saidasOR[0] = new Saida(48, 35);
 		return saidasOR;	
 	}
 
