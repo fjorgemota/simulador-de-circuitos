@@ -37,14 +37,34 @@ public class Main implements MouseListener, ActionListener {
         item.setActionCommand(Paleta.AND);
         guia.add(item);
         item.addActionListener(paleta);
+        
+        item = new JMenuItem("Porta OR");
+        item.setActionCommand(Paleta.OR);
+        guia.add(item);
+        item.addActionListener(paleta);
 
-        item = new JMenuItem("Ponta XOR");
+        item = new JMenuItem("Porta XOR");
         item.setActionCommand(Paleta.XOR);
+        guia.add(item);
+        item.addActionListener(paleta);
+        
+        item = new JMenuItem("Porta NOT");
+        item.setActionCommand(Paleta.NOT);
         guia.add(item);
         item.addActionListener(paleta);
 
         item = new JMenuItem("Porta NOT-AND");
         item.setActionCommand(Paleta.NAND);
+        guia.add(item);
+        item.addActionListener(paleta);
+        
+        item = new JMenuItem("Porta NOT-OR");
+        item.setActionCommand(Paleta.NOR);
+        guia.add(item);
+        item.addActionListener(paleta);
+        
+        item = new JMenuItem("Porta NOT-XOR");
+        item.setActionCommand(Paleta.NXOR);
         guia.add(item);
         item.addActionListener(paleta);
 

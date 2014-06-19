@@ -1,18 +1,18 @@
-class And extends PortaLogica{
-	And(Ponto a, Ponto b){
+class NXOR extends PortaLogica{
+	NXOR(Ponto a, Ponto b){
 		super(a, b);
 	}
 
 	public Entrada[] pegaEntradas() {
-		Entrada[] entradasAnd = new Entrada[2];
-		entradasAnd[0] = new Entrada(50, 20);
-		entradasAnd[1] = new Entrada(50, 35);
-		return entradasAnd;
+		Entrada[] entradasNXOR = new Entrada[2];
+		entradasNXOR[0] = new Entrada(261, 70);
+		entradasNXOR[1] = new Entrada(261, 100);
+		return entradasNXOR;
 	}
 	public Saida[] pegaSaidas() {
-		Saida[] saidasAnd = new Saida[1];
-		saidasAnd[0] = new Saida(60, 26);
-		return saidasAnd;	
+		Saida[] saidasNXOR = new Saida[1];
+		saidasNXOR[0] = new Saida(461, 85);
+		return saidasNXOR;	
 	}
 
     int altura(){
