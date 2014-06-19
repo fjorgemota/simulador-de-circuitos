@@ -4,7 +4,9 @@ import java.awt.event.ActionListener;
 public class Paleta implements ActionListener {
     static String
             RETANGULO = "Retângulo",
-            AND = "AND";
+            AND = "AND",
+            XOR = "XOR",
+            NAND = "NAND";
     private Editor editor;
     private Quadro quadro;
     private int raio = 20;
@@ -22,6 +24,10 @@ public class Paleta implements ActionListener {
             this.editor = new EditorRetangulo(this.quadro);
         } else if (comando.equals(AND)) {
             this.editor = new EditorAnd(this.quadro);
+        } else if (comando.equals(XOR)){
+            this.editor = new EditorXor(this.quadro);
+        } else if(comando.equals(NAND)){
+            this.editor = new EditorNand(this.quadro);
         }
     }
 }

@@ -38,6 +38,16 @@ public class Main implements MouseListener, ActionListener {
         guia.add(item);
         item.addActionListener(paleta);
 
+        item = new JMenuItem("Ponta XOR");
+        item.setActionCommand(Paleta.XOR);
+        guia.add(item);
+        item.addActionListener(paleta);
+
+        item = new JMenuItem("Porta NOT-AND");
+        item.setActionCommand(Paleta.NAND);
+        guia.add(item);
+        item.addActionListener(paleta);
+
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(400, 300);
