@@ -15,11 +15,21 @@ class And extends PortaLogica{
 		return saidasAnd;	
 	}
 
+    int altura(){
+        return 53;
+    }
+
     int largura() {
         return 89;
     }
 
-    int altura() {
-        return 53;
+    void centralizaClique(Ponto ponto1, Ponto ponto2) {
+        // Para centralizar dois pontos a partir do que foi informado no desenho. Faz sentido?
+        int mediaAltura = this.altura()/2;
+        int mediaLargura = this.largura()/2;
+        ponto1.deslocarX(-(mediaLargura));
+        ponto1.deslocarY(-(mediaAltura));
+        ponto2.deslocarX(mediaLargura);
+        ponto2.deslocarY(mediaAltura);
     }
 }
