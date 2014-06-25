@@ -1,15 +1,19 @@
+import editores.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import views.Quadro;
 
 public class Paleta implements ActionListener {
     static String
             RETANGULO = "Retângulo",
             AND = "AND",
-            OR = "OR",
+            OR = "models.OR",
             XOR = "XOR",
-            NOR = "NOR",
-            NOT = "NOT",
-            NXOR = "NXOR",
+            NOR = "models.NOR",
+            NOT = "models.NOT",
+            NXOR = "models.NXOR",
             NAND = "NAND";
     private Editor editor;
     private Quadro quadro;

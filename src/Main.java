@@ -1,3 +1,5 @@
+import views.Quadro;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,17 +55,17 @@ public class Main implements MouseListener, ActionListener {
         guia.add(item);
         item.addActionListener(paleta);
 
-        item = new JMenuItem("Porta NOT-AND");
+        item = new JMenuItem("Porta NAND");
         item.setActionCommand(Paleta.NAND);
         guia.add(item);
         item.addActionListener(paleta);
         
-        item = new JMenuItem("Porta NOT-OR");
+        item = new JMenuItem("Porta NOR");
         item.setActionCommand(Paleta.NOR);
         guia.add(item);
         item.addActionListener(paleta);
         
-        item = new JMenuItem("Porta NOT-XOR");
+        item = new JMenuItem("Porta NXOR");
         item.setActionCommand(Paleta.NXOR);
         guia.add(item);
         item.addActionListener(paleta);
