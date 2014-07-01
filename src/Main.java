@@ -24,51 +24,62 @@ public class Main implements MouseListener, ActionListener {
 
         JMenuItem item;
         item = new JMenuItem("Sair");
-        guia.add(item);
         item.addActionListener(new Main());
+        guia.add(item);
 
         guia = new JMenu("Paleta");
         barra.add(guia);
 
         item = new JMenuItem("Retângulo");
         item.setActionCommand(Paleta.RETANGULO);
-        guia.add(item);
         item.addActionListener(paleta);
+        guia.add(item);
 
         item = new JMenuItem("Porta AND");
         item.setActionCommand(Paleta.AND);
-        guia.add(item);
         item.addActionListener(paleta);
-        
+        guia.add(item);
+
         item = new JMenuItem("Porta OR");
         item.setActionCommand(Paleta.OR);
-        guia.add(item);
         item.addActionListener(paleta);
+        guia.add(item);
 
         item = new JMenuItem("Porta XOR");
         item.setActionCommand(Paleta.XOR);
-        guia.add(item);
         item.addActionListener(paleta);
-        
+        guia.add(item);
+
         item = new JMenuItem("Porta NOT");
         item.setActionCommand(Paleta.NOT);
-        guia.add(item);
         item.addActionListener(paleta);
+        guia.add(item);
 
         item = new JMenuItem("Porta NAND");
         item.setActionCommand(Paleta.NAND);
-        guia.add(item);
         item.addActionListener(paleta);
-        
+        guia.add(item);
+
         item = new JMenuItem("Porta NOR");
         item.setActionCommand(Paleta.NOR);
-        guia.add(item);
         item.addActionListener(paleta);
-        
+        guia.add(item);
+
         item = new JMenuItem("Porta NXOR");
         item.setActionCommand(Paleta.NXOR);
-        guia.add(item);
         item.addActionListener(paleta);
+        guia.add(item);
+
+        JMenu modo = new JMenu("Modo");
+        barra.add(modo);
+
+        item = new JMenuItem("Conectar");
+        item.setEnabled(false);
+        modo.add(item);
+
+        item = new JMenuItem("Editar");
+        item.setEnabled(true);
+        modo.add(item);
 
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
