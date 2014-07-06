@@ -1,9 +1,9 @@
 package models;
 
-class Circulo extends Ponto {
+public class Circulo extends Ponto {
     private int raio;
 
-    Circulo(int x, int y, int raio) {
+    public Circulo(int x, int y, int raio) {
         super(x,y);
         this.raio = raio;
     }
@@ -17,5 +17,9 @@ class Circulo extends Ponto {
     }
     public int y0() {
         return this.y0(raio);
+    }
+
+    public boolean contemPonto(int x, int y) {
+        return this.x0() <= x && (this.x0() + this.diametro()) >= x && this.y0() <= y && (this.y0()+this.diametro()) >= y;
     }
 }
