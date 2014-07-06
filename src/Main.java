@@ -1,18 +1,22 @@
+import editores.Editor;
+import views.Modo;
+import views.Paleta;
 import views.Quadro;
+import views.Reproduzivel;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
-public class Main implements MouseListener, ActionListener {
+public class Main implements MouseListener, MouseMotionListener, ActionListener {
     static Quadro quadro;
     static Paleta paleta;
+    static Modo modo;
+    static Reproduzivel figuraSelecionada;
 
     public static void main(String[] argv) {
         JFrame f = new JFrame();
         quadro = new Quadro();
+        modo = new Modo();
         paleta = new Paleta(quadro);
         f.setContentPane(quadro);
         JMenuBar barra = new JMenuBar();
@@ -29,11 +33,6 @@ public class Main implements MouseListener, ActionListener {
 
         guia = new JMenu("Paleta");
         barra.add(guia);
-
-        item = new JMenuItem("Retângulo");
-        item.setActionCommand(Paleta.RETANGULO);
-        item.addActionListener(paleta);
-        guia.add(item);
 
         item = new JMenuItem("Porta AND");
         item.setActionCommand(Paleta.AND);
@@ -70,16 +69,28 @@ public class Main implements MouseListener, ActionListener {
         item.addActionListener(paleta);
         guia.add(item);
 
-        JMenu modo = new JMenu("Modo");
-        barra.add(modo);
+        item = new JMenuItem("Conector");
+        item.setActionCommand(Paleta.LINHA);
+        item.addActionListener(paleta);
+        guia.add(item);
 
-        item = new JMenuItem("Conectar");
-        item.setEnabled(false);
-        modo.add(item);
+        guia = new JMenu("Modo");
+        barra.add(guia);
+
+        item = new JMenuItem("Criar");
+        item.setActionCommand(Modo.CRIAR);
+        item.addActionListener(modo);
+        guia.add(item);
 
         item = new JMenuItem("Editar");
-        item.setEnabled(true);
-        modo.add(item);
+        item.setActionCommand(Modo.EDITAR);
+        item.addActionListener(modo);
+        guia.add(item);
+
+        item = new JMenuItem("Apagar");
+        item.setActionCommand(Modo.APAGAR);
+        item.addActionListener(modo);
+        guia.add(item);
 
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,24 +104,61 @@ public class Main implements MouseListener, ActionListener {
     }
 
     static void desenhar() {
-        Main.quadro.addMouseListener(new Main());
+        Main main = new Main();
+        Main.quadro.addMouseListener(main);
+        Main.quadro.addMouseMotionListener(main);
     }
 
     public void mouseClicked(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        Main.paleta.editor().clique(x, y);
+        if (modo.estaCriando()) {
+            int x = e.getX();
+            int y = e.getY();
+            Editor editor = Main.paleta.editor();
+            if(editor == null){
+                JOptionPane.showMessageDialog(null, "Selecione um componente no menu 'Paleta'!");
+
+            } else {
+                editor.clique(x, y);
+            }
+        }
     }
 
     public void mousePressed(MouseEvent e) {
+        if (modo.estaEditando()) {
+            int x = e.getX();
+            int y = e.getY();
+            figuraSelecionada = Main.quadro.pegaObjetoEm(x, y);
+            if(figuraSelecionada == null) {
+                JOptionPane.showMessageDialog(null, "Selecione um componente e arraste!");
+            }
+            else {
+                figuraSelecionada.selecionaPonto(x, y);
+            }
+        }
     }
 
     public void mouseReleased(MouseEvent e) {
+        if (modo.estaEditando() && figuraSelecionada != null) {
+            figuraSelecionada = null;
+        }
     }
 
     public void mouseEntered(MouseEvent e) {
     }
 
     public void mouseExited(MouseEvent e) {
+    }
+
+    public void mouseDragged(MouseEvent e) {
+        if (modo.estaEditando() && figuraSelecionada != null) {
+            int x = e.getX();
+            int y = e.getY();
+            figuraSelecionada.movePara(x, y);
+            Main.quadro.repaint();
+        }
+    }
+
+    public void mouseMoved(MouseEvent e) {
+
     }
 }
