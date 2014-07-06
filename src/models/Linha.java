@@ -56,6 +56,7 @@ public class Linha implements Editavel{
         for(int i=0; i < npontos(); i++) {
             if(pontos.get(i).contemPonto(x, y)) {
                 this.pontoSelecionado = pontos.get(i);
+                this.pontoSelecionado.selecionaPonto(x, y);
                 break;
             }
         }
@@ -64,8 +65,7 @@ public class Linha implements Editavel{
     // Move o ponto selecionado
     public void movePara(int x, int y){
         if(this.pontoSelecionado != null) {
-            this.pontoSelecionado.deslocarX(x - this.pontoSelecionado.x0());
-            this.pontoSelecionado.deslocarY(y - this.pontoSelecionado.y0());
+            this.pontoSelecionado.movePara(x, y);
         }
     }
 }
