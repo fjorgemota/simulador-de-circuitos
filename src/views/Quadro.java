@@ -13,6 +13,15 @@ public class Quadro extends JPanel {
         k+=1;
     }
 
+    public Reproduzivel pegaObjetoEm(int x, int y){
+        for(int i=0; i < fig.size(); i++) {
+            if (fig.get(i).contemPonto(x, y)) {
+                return fig.get(i);
+            }
+        }
+        return null;
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g); // paintComponent redesenha o painel
         g.setColor(Color.WHITE);
