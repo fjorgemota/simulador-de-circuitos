@@ -1,11 +1,12 @@
 package models;
 
 import models.Ponto;
+import views.Editavel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Linha {
+public class Linha implements Editavel{
     private List<Circulo> pontos = new ArrayList<Circulo>();
     private Circulo pontoSelecionado = null; // Guarda o ponto selecionado da linha. Ver se ha melhor forma de fazer isso.
 
