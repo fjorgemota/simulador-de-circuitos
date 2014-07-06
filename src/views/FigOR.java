@@ -29,11 +29,11 @@ public class FigOR extends OR implements Reproduzivel {
         Saida[] saidas = this.pegaSaidas();
         g.setColor(Color.RED);
         for(int i=0; i<entradas.length; i++) {
-            g.fillOval(this.x() + entradas[i].x0(), this.y() + entradas[i].y0(), entradas[i].diametro(), entradas[i].diametro());
+            g.fillOval(entradas[i].x0(), entradas[i].y0(), entradas[i].diametro(), entradas[i].diametro());
         }
         g.setColor(Color.BLUE);
         for(int i=0; i<saidas.length; i++) {
-            g.fillOval(this.x() + saidas[i].x0(), this.y() + saidas[i].y0(), saidas[i].diametro(), saidas[i].diametro());
+            g.fillOval(saidas[i].x0(), saidas[i].y0(), saidas[i].diametro(), saidas[i].diametro());
         }
         g.setColor(Color.BLACK);
     }
