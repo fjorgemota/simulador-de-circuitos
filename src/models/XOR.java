@@ -35,13 +35,4 @@ public class XOR extends PortaLogica {
     public int largura(){
         return 83;
     }
-
-    void centralizaClique(Ponto ponto1, Ponto ponto2){
-        int mediaAltura = this.altura()/2;
-        int mediaLargura = this.largura()/2;
-        ponto1.deslocarY(-(mediaAltura));
-        ponto1.deslocarX(-(mediaLargura));
-        ponto2.deslocarY(mediaAltura);
-        ponto2.deslocarX(mediaLargura);
-    }
 }

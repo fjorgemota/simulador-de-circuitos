@@ -18,6 +18,12 @@ public abstract class PortaLogica extends Retangulo{
     // E tambem altura..
     abstract public int altura();
 
-    // E, por padrao, devem aparecer de forma centralizada no painel
-    abstract void centralizaClique(Ponto ponto1, Ponto ponto2);
+    protected void centralizaClique(Ponto ponto1, Ponto ponto2) {
+        int mediaAltura = this.altura()/2;
+        int mediaLargura = this.largura()/2;
+        ponto1.deslocarX(-(mediaLargura));
+        ponto1.deslocarY(-(mediaAltura));
+        ponto2.deslocarX(mediaLargura);
+        ponto2.deslocarY(mediaAltura);
+    }
 }

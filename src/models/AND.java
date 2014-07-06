@@ -24,15 +24,4 @@ public class AND extends PortaLogica{
     public int largura() {
         return 89;
     }
-
-    void centralizaClique(Ponto ponto1, Ponto ponto2) {
-        // Para centralizar dois pontos a partir do que foi informado no desenho. Faz sentido?
-    	// Sim, só que seria melhor se fosse na porta lógica, não? Mais geral.
-        int mediaAltura = this.altura()/2;
-        int mediaLargura = this.largura()/2;
-        ponto1.deslocarX(-(mediaLargura));
-        ponto1.deslocarY(-(mediaAltura));
-        ponto2.deslocarX(mediaLargura);
-        ponto2.deslocarY(mediaAltura);
-    }
 }

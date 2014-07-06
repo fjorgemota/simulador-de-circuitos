@@ -24,13 +24,4 @@ public class NAND extends PortaLogica{
     public int altura() {
         return 89;
     }
-
-    void centralizaClique(Ponto ponto1, Ponto ponto2) {
-        int mediaLargura = this.largura()/2;
-        int mediaAltura = this.altura()/2;
-        ponto1.deslocarX(-(mediaLargura));
-        ponto1.deslocarY(-(mediaAltura));
-        ponto2.deslocarX(mediaLargura);
-        ponto2.deslocarY(mediaAltura);
-    }
 }
