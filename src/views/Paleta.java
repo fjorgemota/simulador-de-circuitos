@@ -1,36 +1,39 @@
+package views;
+
 import editores.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import views.Modo;
 import views.Quadro;
 
+/**
+ * Permite a selecao de editores. E SO isso.
+ */
 public class Paleta implements ActionListener {
-    static String
-            RETANGULO = "Retângulo",
+    public static String
             AND = "AND",
-            OR = "models.OR",
+            OR = "OR",
             XOR = "XOR",
-            NOR = "models.NOR",
-            NOT = "models.NOT",
-            NXOR = "models.NXOR",
-            NAND = "NAND";
+            NOR = "NOR",
+            NOT = "NOT",
+            NXOR = "NXOR",
+            NAND = "NAND",
+            LINHA = "LINHA";
     private Editor editor;
     private Quadro quadro;
-    private int raio = 20;
-    Editor editor() {
-        return editor;
-    }
-    Paleta(Quadro quadro){
+    public Paleta(Quadro quadro){
         this.quadro = quadro;
-        this.editor = new EditorRetangulo(quadro);
+        this.editor = null;
+    }
+    public Editor editor() {
+        return editor;
     }
 
     public void actionPerformed(ActionEvent e){
         String comando = e.getActionCommand();
-        if(comando.equals(RETANGULO)){
-            this.editor = new EditorRetangulo(this.quadro);
-        } else if (comando.equals(AND)) {
+        if (comando.equals(AND)) {
             this.editor = new EditorAnd(this.quadro);
         }else if(comando.equals(OR)){
             this.editor = new EditorOR(this.quadro);
@@ -44,6 +47,9 @@ public class Paleta implements ActionListener {
             this.editor = new EditorNXOR(this.quadro);
         } else if(comando.equals(NAND)){
             this.editor = new EditorNand(this.quadro);
+        }
+        else if(comando.equals(LINHA)) {
+            this.editor = new EditorLinha(this.quadro);
         }
     }
 }
