@@ -3,14 +3,18 @@ package editores;
 import views.*;
 import models.*;
 
+import javax.swing.*;
 
-public class EditorNOR implements Editor {
-	private Quadro quadro;
+
+public class EditorNOR extends EditorPortaLogica {
 	public EditorNOR(Quadro quadro){
-		this.quadro = quadro;
+		super(quadro);
 	}
 	public void clique(int x, int y){
-        this.quadro.addFig(new FigNOR(new Ponto(x, y), new Ponto(x, y)));
-        this.quadro.repaint();
+        FigNOR nand = new FigNOR(new Ponto(x, y), new Ponto(x, y));
+        if(this.continuaInsercao(nand)){
+            this.quadro.addFig(nand);
+            this.quadro.repaint();
+        }
 	}
 }

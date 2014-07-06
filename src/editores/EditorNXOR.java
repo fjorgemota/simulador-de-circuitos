@@ -3,13 +3,15 @@ package editores;
 import views.*;
 import models.*;
 
-public class EditorNXOR implements Editor {
-	private Quadro quadro;
+public class EditorNXOR extends EditorPortaLogica {
 	public EditorNXOR(Quadro quadro){
-		this.quadro = quadro;
+		super(quadro);
 	}
 	public void clique(int x, int y){
-        this.quadro.addFig(new FigNXOR(new Ponto(x, y), new Ponto(x, y)));
-        this.quadro.repaint();
+        FigNXOR nxor = new FigNXOR(new Ponto(x, y), new Ponto(x, y));
+        if(this.continuaInsercao(nxor)) {
+            this.quadro.addFig(nxor);
+            this.quadro.repaint();
+        }
 	}
 }

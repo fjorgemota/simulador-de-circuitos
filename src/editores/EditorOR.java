@@ -4,13 +4,15 @@ import views.*;
 import models.*;
 
 
-public class EditorOR implements Editor {
-	private Quadro quadro;
+public class EditorOR extends EditorPortaLogica{
 	public EditorOR(Quadro quadro){
-		this.quadro = quadro;
+		super(quadro);
 	}
 	public void clique(int x, int y){
-        this.quadro.addFig(new FigOR(new Ponto(x, y), new Ponto(x, y)));
-        this.quadro.repaint();
+        FigOR or = new FigOR(new Ponto(x, y), new Ponto(x, y));
+        if(this.continuaInsercao(or)) {
+            this.quadro.addFig(or);
+            this.quadro.repaint();
+        }
 	}
 }

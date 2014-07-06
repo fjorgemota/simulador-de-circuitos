@@ -3,13 +3,15 @@ package editores;
 import views.*;
 import models.*;
 
-public class EditorNOT implements Editor {
-	private Quadro quadro;
+public class EditorNOT extends EditorPortaLogica {
 	public EditorNOT(Quadro quadro){
-		this.quadro = quadro;
+		super(quadro);
 	}
 	public void clique(int x, int y){
-        this.quadro.addFig(new FigNOT(new Ponto(x, y), new Ponto(x, y)));
-        this.quadro.repaint();
+        FigNOT not = new FigNOT(new Ponto(x, y), new Ponto(x, y));
+        if(this.continuaInsercao(not)) {
+            this.quadro.addFig(not);
+            this.quadro.repaint();
+        }
 	}
 }

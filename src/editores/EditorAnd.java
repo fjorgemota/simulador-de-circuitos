@@ -3,13 +3,17 @@ package editores;
 import views.*;
 import models.*;
 
-public class EditorAnd implements Editor {
-	private Quadro quadro;
+import javax.swing.*;
+
+public class EditorAnd extends EditorPortaLogica {
 	public EditorAnd(Quadro quadro){
-		this.quadro = quadro;
+        super(quadro);
 	}
 	public void clique(int x, int y){
-        this.quadro.addFig(new FigAND(new Ponto(x, y), new Ponto(x, y)));
-        this.quadro.repaint();
+        FigAND and = new FigAND(new Ponto(x, y), new Ponto(x, y));
+        if(this.continuaInsercao(and)){
+            this.quadro.addFig(and);
+            this.quadro.repaint();
+        }
 	}
 }
