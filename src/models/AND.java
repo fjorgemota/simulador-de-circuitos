@@ -7,13 +7,13 @@ public class AND extends PortaLogica{
 
 	public Entrada[] pegaEntradas() {
 		Entrada[] entradasAnd = new Entrada[2];
-		entradasAnd[0] = new Entrada(0, 13);
-		entradasAnd[1] = new Entrada(0, 39);
+		entradasAnd[0] = new Entrada(this, 0, 13);
+		entradasAnd[1] = new Entrada(this, 0, 39);
 		return entradasAnd;
 	}
 	public Saida[] pegaSaidas() {
 		Saida[] saidasAnd = new Saida[1];
-		saidasAnd[0] = new Saida(87, 26);
+		saidasAnd[0] = new Saida(this, 87, 26);
 		return saidasAnd;	
 	}
 

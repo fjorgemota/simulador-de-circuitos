@@ -7,13 +7,13 @@ public class NOR extends PortaLogica{
 
 	public Entrada[] pegaEntradas() {
 		Entrada[] entradasNOR = new Entrada[2];
-		entradasNOR[0] = new Entrada(3, 16);
-		entradasNOR[1] = new Entrada(3, 40);
+		entradasNOR[0] = new Entrada(this, 3, 16);
+		entradasNOR[1] = new Entrada(this, 3, 40);
 		return entradasNOR;
 	}
 	public Saida[] pegaSaidas() {
 		Saida[] saidasNOR = new Saida[1];
-		saidasNOR[0] = new Saida(87, 27);
+		saidasNOR[0] = new Saida(this, 87, 27);
 		return saidasNOR;	
 	}
 

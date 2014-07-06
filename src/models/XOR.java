@@ -9,8 +9,8 @@ public class XOR extends PortaLogica {
 
     public Entrada[] pegaEntradas() {
         Entrada[] entradasXor = new Entrada[2];
-        entradasXor[0] = new Entrada(0, 12);
-        entradasXor[1] = new Entrada(0, 37);
+        entradasXor[0] = new Entrada(this, 0, 12);
+        entradasXor[1] = new Entrada(this, 0, 37);
         return entradasXor;
     }
 
@@ -24,7 +24,7 @@ public class XOR extends PortaLogica {
 
     public Saida[] pegaSaidas(){
         Saida[] saidasXor = new Saida[1];
-        saidasXor[0] = new Saida(80, 24);
+        saidasXor[0] = new Saida(this, 80, 24);
         return saidasXor;
     }
 

@@ -7,13 +7,13 @@ public class NXOR extends PortaLogica{
 
 	public Entrada[] pegaEntradas() {
 		Entrada[] entradasNXOR = new Entrada[2];
-		entradasNXOR[0] = new Entrada(0, 13);
-		entradasNXOR[1] = new Entrada(0, 39);
+		entradasNXOR[0] = new Entrada(this, 0, 13);
+		entradasNXOR[1] = new Entrada(this, 0, 39);
 		return entradasNXOR;
 	}
 	public Saida[] pegaSaidas() {
 		Saida[] saidasNXOR = new Saida[1];
-		saidasNXOR[0] = new Saida(87, 26);
+		saidasNXOR[0] = new Saida(this, 87, 26);
 		return saidasNXOR;	
 	}
 

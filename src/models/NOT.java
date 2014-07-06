@@ -7,12 +7,12 @@ public class NOT extends PortaLogica{
 
 	public Entrada[] pegaEntradas() {
 		Entrada[] entradasNOT = new Entrada[1];
-		entradasNOT[0] = new Entrada(7, 26);
+		entradasNOT[0] = new Entrada(this, 7, 26);
 		return entradasNOT;
 	}
 	public Saida[] pegaSaidas() {
 		Saida[] saidasNOT = new Saida[1];
-		saidasNOT[0] = new Saida(85, 25);
+		saidasNOT[0] = new Saida(this, 85, 25);
 		return saidasNOT;	
 	}
 
