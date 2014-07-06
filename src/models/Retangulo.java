@@ -36,18 +36,6 @@ public class Retangulo implements Editavel {
         return ponto1.distanciaY(ponto2);
     }
 
-    long area(){
-        long b = this.largura();
-        long h = this.altura();
-        return (b*h);
-    }
-
-    long perimetro(){
-        long l = this.largura()*2;
-        long h = this.altura()*2;
-        return l+h;
-    }
-
     public boolean contemPonto(int x, int y) {
         return this.x() <= x && (this.x() + this.largura()) >= x && this.y() <= y && (this.y()+this.altura()) >= y;
     }
