@@ -2,17 +2,17 @@ package models;
 
 public class Retangulo {
     private Ponto ponto1, ponto2;
-
+    private int xSel, ySel; // Usados para guardar o x e y selecionados. Ver se ha melhor forma de fazer isso.
     public Retangulo(Ponto ponto1, Ponto ponto2){
         this.ponto1 = ponto1;
         this.ponto2 = ponto2;
     }
 
-    void deslocarX(int val){
+    public void deslocarX(int val){
         ponto1.deslocarX(val);
         ponto2.deslocarX(val);
     }
-    void deslocarY(int val){
+    public void deslocarY(int val){
         ponto1.deslocarY(val);
         ponto2.deslocarY(val);
     }
@@ -43,6 +43,24 @@ public class Retangulo {
         long l = this.largura()*2;
         long h = this.altura()*2;
         return l+h;
+    }
+
+    public boolean contemPonto(int x, int y) {
+        return this.x() <= x && (this.x() + this.largura()) >= x && this.y() <= y && (this.y()+this.altura()) >= y;
+    }
+
+    // Seleciona o retangulo
+    public void selecionaPonto(int x, int y) {
+        this.xSel = x-this.x();
+        this.ySel = y-this.y();
+    }
+
+    // Move o ponto
+    public void movePara(int x, int y){
+        x -= this.xSel;
+        y -= this.ySel;
+        this.deslocarX(x - this.x());
+        this.deslocarY(y - this.y());
     }
 
 }
