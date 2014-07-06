@@ -69,8 +69,12 @@ public class EditorLinha implements Editor{
                 if(circulo == null) {
                     JOptionPane.showMessageDialog(null, "Selecione uma entrada se você deseja conectar o cabo a esta porta lógica!");
                 }
-                else {
+                else if(linha.npontos() > 1) {
                     nEstado = 0;
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Por favor, adicione pelo menos mais um ponto antes de conectar este cabo diretamente a uma porta lógica!");
+                    return;
                 }
             }
             else if(figura instanceof Linha) {
@@ -82,7 +86,13 @@ public class EditorLinha implements Editor{
                         break;
                     }
                 }
-                nEstado = 0;
+                if(linha.npontos() > 1) {
+                    nEstado = 0;
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Por favor, adicione pelo menos mais um ponto antes de conectar este cabo diretamente a uma outro cabo!");
+                    return;
+                }
             }
             linha.addPonto(circulo);
         }
