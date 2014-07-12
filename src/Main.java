@@ -94,7 +94,7 @@ public class Main implements MouseListener, MouseMotionListener, ActionListener 
 
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setSize(400, 300);
+        f.setSize(800, 600);
         f.setTitle("Simulador de Circuitos");
         desenhar();
     }
