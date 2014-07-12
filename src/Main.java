@@ -135,6 +135,18 @@ public class Main implements MouseListener, MouseMotionListener, ActionListener 
                 figuraSelecionada.selecionaPonto(x, y);
             }
         }
+        else if(modo.estaApagando()){
+            int x = e.getX();
+            int y = e.getY();
+            figuraSelecionada = Main.quadro.pegaObjetoEm(x, y);
+            if(figuraSelecionada == null) {
+                JOptionPane.showMessageDialog(null, "Selecione um componente para apagar");
+            }
+            else {
+                quadro.removeFig(figuraSelecionada);
+                quadro.repaint();
+            }
+        }
     }
 
     public void mouseReleased(MouseEvent e) {

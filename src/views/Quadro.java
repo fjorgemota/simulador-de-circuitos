@@ -12,7 +12,10 @@ public class Quadro extends JPanel {
         this.fig.add(fig);
         k+=1;
     }
-
+    public void removeFig(Reproduzivel fig){
+    	this.fig.remove(fig);
+    	k+=1;
+    }
     public Reproduzivel pegaObjetoEm(int x, int y){
         for(int i=0; i < fig.size(); i++) {
             if (fig.get(i).contemPonto(x, y)) {
