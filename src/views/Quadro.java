@@ -6,15 +6,12 @@ import java.util.ArrayList;
 
 public class Quadro extends JPanel {
     private java.util.List<Reproduzivel> fig = new ArrayList<Reproduzivel>();
-    int raio = 20, k = 0; // ponto central
 
     public void addFig(Reproduzivel fig){
         this.fig.add(fig);
-        k+=1;
     }
     public void removeFig(Reproduzivel fig){
     	this.fig.remove(fig);
-    	k+=1;
     }
     public Reproduzivel pegaObjetoEm(int x, int y){
         for(int i=0; i < fig.size(); i++) {
