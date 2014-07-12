@@ -68,6 +68,7 @@ public class EditorLinha implements Editor{
                 }
                 if(circulo == null) {
                     JOptionPane.showMessageDialog(null, "Selecione uma entrada se você deseja conectar o cabo a esta porta lógica!");
+                    return;
                 }
                 else if(linha.npontos() > 1) {
                     nEstado = 0;
