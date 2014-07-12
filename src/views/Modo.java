@@ -19,16 +19,10 @@ public class Modo implements ActionListener {
         else if(comando.equals(CRIAR)) {
             modoAtual = CRIAR;
         }
-        else if(comando.equals(APAGAR)){
-        	modoAtual = APAGAR;
-        }
     }
 
     public boolean estaEditando(){
         return modoAtual.equals(EDITAR);
-    }
-    public boolean estaApagando(){
-        return modoAtual.equals(APAGAR);
     }
 
     public boolean estaCriando(){
