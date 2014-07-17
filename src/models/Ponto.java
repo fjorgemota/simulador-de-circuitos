@@ -63,6 +63,9 @@ public class Ponto {
         return y0;
     }
 
+    int x(){ return x; }
+    int y(){ return y; }
+
     int x0(int raio){
         return x - raio;
     }

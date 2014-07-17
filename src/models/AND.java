@@ -1,8 +1,8 @@
 package models;
 
 public class AND extends PortaLogica{
-	public AND(Ponto a, Ponto b){
-		super(a, b);
+	public AND(Ponto superiorEsquerdo){
+		super(superiorEsquerdo);
 	}
 
 	public Entrada[] pegaEntradas() {

@@ -13,8 +13,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class FigNOR extends NOR implements Reproduzivel {
-	public FigNOR(Ponto a, Ponto b){
-		super(a, b);
+	public FigNOR(Ponto superiorEsquerdo){
+		super(superiorEsquerdo);
    	}
 	public void reproduzir(Graphics g) {
         BufferedImage image;

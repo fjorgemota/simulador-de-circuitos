@@ -8,7 +8,7 @@ public class EditorNOT extends EditorPortaLogica {
 		super(quadro);
 	}
 	public void clique(int x, int y){
-        FigNOT not = new FigNOT(new Ponto(x, y), new Ponto(x, y));
+        FigNOT not = new FigNOT(new Ponto(x, y));
         if(this.continuaInsercao(not)) {
             this.quadro.addFig(not);
             this.quadro.repaint();

@@ -13,8 +13,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class FigXOR extends XOR implements Reproduzivel {
-    public FigXOR(Ponto a, Ponto b){
-        super(a,b);
+    public FigXOR(Ponto superiorEsquerdo){
+        super(superiorEsquerdo);
     }
     public void reproduzir(Graphics g){
         BufferedImage image;

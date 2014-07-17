@@ -11,6 +11,11 @@ public class Retangulo implements Editavel {
         this.ponto2 = ponto2;
     }
 
+    public Retangulo(Ponto superiorEsquerdo) {
+        this.ponto1 = superiorEsquerdo;
+        this.ponto2 = new Ponto(superiorEsquerdo.x()+this.largura(), superiorEsquerdo.y()+this.altura());
+    }
+
     public void deslocarX(int val){
         ponto1.deslocarX(val);
         ponto2.deslocarX(val);

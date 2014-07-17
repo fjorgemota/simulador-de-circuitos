@@ -1,8 +1,8 @@
 package models;
 
 public class NOT extends PortaLogica{
-	public NOT(Ponto a, Ponto b){
-		super(a, b);
+	public NOT(Ponto superiorEsquerdo){
+		super(superiorEsquerdo);
 	}
 
 	public Entrada[] pegaEntradas() {

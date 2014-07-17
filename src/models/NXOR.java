@@ -1,8 +1,8 @@
 package models;
 
 public class NXOR extends PortaLogica{
-	public NXOR(Ponto a, Ponto b){
-		super(a, b);
+	public NXOR(Ponto superiorEsquerdo){
+		super(superiorEsquerdo);
 	}
 
 	public Entrada[] pegaEntradas() {

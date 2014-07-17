@@ -1,8 +1,8 @@
 package models;
 
 public class OR extends PortaLogica{
-	public OR(Ponto a, Ponto b){
-		super(a, b);
+	public OR(Ponto superiorEsquerdo){
+		super(superiorEsquerdo);
 	}
 
 	public Entrada[] pegaEntradas() {

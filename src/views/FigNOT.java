@@ -13,8 +13,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class FigNOT extends NOT implements Reproduzivel {
-    public FigNOT(Ponto a, Ponto b){
-		super(a, b);
+    public FigNOT(Ponto superiorEsquerdo){
+		super(superiorEsquerdo);
    	}
 	public void reproduzir(Graphics g) {
         BufferedImage image;

@@ -1,8 +1,8 @@
 package models;
 
 public class NAND extends PortaLogica{
-    public NAND(Ponto a, Ponto b){
-        super(a,b);
+    public NAND(Ponto superiorEsquerdo){
+        super(superiorEsquerdo);
     }
 
     public Entrada[] pegaEntradas(){

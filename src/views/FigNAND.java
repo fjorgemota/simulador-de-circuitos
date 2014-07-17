@@ -13,8 +13,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class FigNAND extends NAND implements Reproduzivel {
-    public FigNAND(Ponto a, Ponto b){
-        super(a , b);
+    public FigNAND(Ponto superiorEsquerdo){
+        super(superiorEsquerdo);
     }
     public void reproduzir(Graphics g){
         BufferedImage image;

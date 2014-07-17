@@ -13,8 +13,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class FigAND extends AND implements Reproduzivel {
-    public FigAND(Ponto a, Ponto b){
-		super(a, b);
+    public FigAND(Ponto superiorEsquerdo){
+		super(superiorEsquerdo);
    	}
 	public void reproduzir(Graphics g) {
         BufferedImage image;

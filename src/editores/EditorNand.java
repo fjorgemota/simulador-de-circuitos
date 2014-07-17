@@ -10,7 +10,7 @@ public class EditorNand extends EditorPortaLogica {
         super(quadro);
     }
     public void clique(int x, int y){
-        FigNAND nand = new FigNAND(new Ponto(x,y), new Ponto(x,y));
+        FigNAND nand = new FigNAND(new Ponto(x,y));
         if(this.continuaInsercao(nand)){
             this.quadro.addFig(nand);
             this.quadro.repaint();

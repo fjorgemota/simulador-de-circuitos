@@ -1,9 +1,9 @@
 package models;
 
 public abstract class PortaLogica extends Retangulo{
-    protected PortaLogica(Ponto ponto1, Ponto ponto2) {
-        super(ponto1, ponto2);
-        this.centralizaClique(ponto1, ponto2);
+    protected PortaLogica(Ponto superiorEsquerdo) {
+        super(superiorEsquerdo);
+        this.centralizaClique();
     }
 
     // Porta logicas tambem tem entradas...
@@ -18,12 +18,11 @@ public abstract class PortaLogica extends Retangulo{
     // E tambem altura..
     abstract public int altura();
 
-    protected void centralizaClique(Ponto ponto1, Ponto ponto2) {
+    // Desloca X e Y de forma que a porta logica apaerca exatamente no meio do clique do usuario
+    protected void centralizaClique() {
         int mediaAltura = this.altura()/2;
         int mediaLargura = this.largura()/2;
-        ponto1.deslocarX(-(mediaLargura));
-        ponto1.deslocarY(-(mediaAltura));
-        ponto2.deslocarX(mediaLargura);
-        ponto2.deslocarY(mediaAltura);
+        this.deslocarX(-(mediaLargura));
+        this.deslocarY(-(mediaAltura));
     }
 }

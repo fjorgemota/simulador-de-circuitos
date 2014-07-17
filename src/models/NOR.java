@@ -1,8 +1,8 @@
 package models;
 
 public class NOR extends PortaLogica{
-	public NOR(Ponto a, Ponto b){
-		super(a, b);
+	public NOR(Ponto superiorEsquerdo){
+		super(superiorEsquerdo);
 	}
 
 	public Entrada[] pegaEntradas() {
