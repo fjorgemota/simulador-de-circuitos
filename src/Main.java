@@ -1,4 +1,5 @@
 import editores.Editor;
+import models.Botao;
 import views.Modo;
 import views.Paleta;
 import views.Quadro;
@@ -74,6 +75,11 @@ public class Main implements MouseListener, MouseMotionListener, ActionListener 
         item.addActionListener(paleta);
         guia.add(item);
 
+        item = new JMenuItem("Botão");
+        item.setActionCommand(Paleta.BOTAO);
+        item.addActionListener(paleta);
+        guia.add(item);
+
         guia = new JMenu("Modo");
         barra.add(guia);
 
@@ -92,6 +98,11 @@ public class Main implements MouseListener, MouseMotionListener, ActionListener 
         item.addActionListener(modo);
         guia.add(item);
 
+        item = new JMenuItem("Simular");
+        item.setActionCommand(Modo.SIMULAR);
+        item.addActionListener(modo);
+        guia.add(item);
+
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(800, 600);
@@ -99,7 +110,7 @@ public class Main implements MouseListener, MouseMotionListener, ActionListener 
         desenhar();
     }
 
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
         System.exit(0); //sai da aplicação com o código de status zero
     }
 
@@ -114,7 +125,7 @@ public class Main implements MouseListener, MouseMotionListener, ActionListener 
             int x = e.getX();
             int y = e.getY();
             Editor editor = Main.paleta.editor();
-            if(editor == null){
+            if (editor == null) {
                 JOptionPane.showMessageDialog(null, "Selecione um componente no menu 'Paleta'!");
 
             } else {
@@ -128,23 +139,30 @@ public class Main implements MouseListener, MouseMotionListener, ActionListener 
             int x = e.getX();
             int y = e.getY();
             figuraSelecionada = Main.quadro.pegaObjetoEm(x, y);
-            if(figuraSelecionada == null) {
+            if (figuraSelecionada == null) {
                 JOptionPane.showMessageDialog(null, "Selecione um componente e arraste!");
-            }
-            else {
+            } else {
                 figuraSelecionada.selecionaPonto(x, y);
             }
-        }
-        else if(modo.estaApagando()){
+        } else if (modo.estaApagando()) {
             int x = e.getX();
             int y = e.getY();
             figuraSelecionada = Main.quadro.pegaObjetoEm(x, y);
-            if(figuraSelecionada == null) {
+            if (figuraSelecionada == null) {
                 JOptionPane.showMessageDialog(null, "Selecione um componente para apagar");
-            }
-            else {
+            } else {
                 quadro.removeFig(figuraSelecionada);
                 quadro.repaint();
+            }
+        } else if (modo.estaSimulando()) {
+            int x = e.getX();
+            int y = e.getY();
+            figuraSelecionada = Main.quadro.pegaObjetoEm(x, y);
+            if (figuraSelecionada instanceof Botao) {
+                figuraSelecionada.calcula();
+                quadro.repaint();
+            } else {
+                JOptionPane.showMessageDialog(null, "Clique em um botão para simular");
             }
         }
     }

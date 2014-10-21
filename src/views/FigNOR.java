@@ -1,9 +1,6 @@
 package views;
 
-import models.Entrada;
-import models.NOR;
-import models.Ponto;
-import models.Saida;
+import models.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,10 +10,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class FigNOR extends NOR implements Reproduzivel {
-	public FigNOR(Ponto superiorEsquerdo){
-		super(superiorEsquerdo);
-   	}
-	public void reproduzir(Graphics g) {
+    public FigNOR(Ponto superiorEsquerdo) {
+        super(superiorEsquerdo);
+    }
+
+    public void reproduzir(Graphics g) {
         BufferedImage image;
         try {
             image = ImageIO.read(new File("imagens/nor.png"));
@@ -28,11 +26,15 @@ public class FigNOR extends NOR implements Reproduzivel {
         Entrada[] entradas = this.pegaEntradas();
         Saida[] saidas = this.pegaSaidas();
         g.setColor(Color.RED);
-        for(int i=0; i<entradas.length; i++) {
+        for (int i = 0; i < entradas.length; i++) {
             g.fillOval(entradas[i].x0(), entradas[i].y0(), entradas[i].diametro(), entradas[i].diametro());
         }
-        g.setColor(Color.BLUE);
-        for(int i=0; i<saidas.length; i++) {
+        if (this.valor == Sinal.ATIVADO) {
+            g.setColor(Color.DARK_GRAY);
+        } else {
+            g.setColor(Color.LIGHT_GRAY);
+        }
+        for (int i = 0; i < saidas.length; i++) {
             g.fillOval(saidas[i].x0(), saidas[i].y0(), saidas[i].diametro(), saidas[i].diametro());
         }
         g.setColor(Color.BLACK);

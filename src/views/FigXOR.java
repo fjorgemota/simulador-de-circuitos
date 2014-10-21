@@ -1,9 +1,6 @@
 package views;
 
-import models.Entrada;
-import models.Saida;
-import models.XOR;
-import models.Ponto;
+import models.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,14 +10,15 @@ import java.io.File;
 import java.io.IOException;
 
 public class FigXOR extends XOR implements Reproduzivel {
-    public FigXOR(Ponto superiorEsquerdo){
+    public FigXOR(Ponto superiorEsquerdo) {
         super(superiorEsquerdo);
     }
-    public void reproduzir(Graphics g){
+
+    public void reproduzir(Graphics g) {
         BufferedImage image;
-        try{
+        try {
             image = ImageIO.read(new File("imagens/xor.png"));
-        } catch(IOException e){
+        } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar a imagem: imagens/xor.png");
             return;
         }
@@ -28,11 +26,15 @@ public class FigXOR extends XOR implements Reproduzivel {
         Entrada[] entradas = this.pegaEntradas();
         Saida[] saidas = this.pegaSaidas();
         g.setColor(Color.RED);
-        for(int i=0; i<entradas.length; i++) {
+        for (int i = 0; i < entradas.length; i++) {
             g.fillOval(entradas[i].x0(), entradas[i].y0(), entradas[i].diametro(), entradas[i].diametro());
         }
-        g.setColor(Color.BLUE);
-        for(int i=0; i<saidas.length; i++) {
+        if (this.valor == Sinal.ATIVADO) {
+            g.setColor(Color.DARK_GRAY);
+        } else {
+            g.setColor(Color.LIGHT_GRAY);
+        }
+        for (int i = 0; i < saidas.length; i++) {
             g.fillOval(saidas[i].x0(), saidas[i].y0(), saidas[i].diametro(), saidas[i].diametro());
         }
         g.setColor(Color.BLACK);
