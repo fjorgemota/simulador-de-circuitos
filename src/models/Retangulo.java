@@ -1,8 +1,6 @@
 package models;
 
-import views.Editavel;
-
-public abstract class Retangulo implements Editavel {
+public class Retangulo {
     private Ponto ponto1, ponto2;
     private int xSel, ySel; // Usados para guardar o x e y selecionados. Ver se ha melhor forma de fazer isso.
 

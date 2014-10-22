@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class PortaLogica extends Retangulo {
+public abstract class PortaLogica extends Retangulo implements Editavel {
     protected List<Editavel> entradas = new ArrayList<Editavel>();
     protected List<Editavel> saidas = new ArrayList<Editavel>();
     protected Sinal valor;

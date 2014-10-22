@@ -2,48 +2,13 @@ package models;
 
 import views.Editavel;
 
-public class Circulo extends Ponto implements Editavel {
+public class Circulo extends Ponto {
     private int raio;
     private int xSel, ySel;
 
     public Circulo(int x, int y, int raio) {
         super(x, y);
         this.raio = raio;
-    }
-
-    @Override
-    public void apaga() {
-
-    }
-
-    @Override
-    public void conectaSaida(Editavel saida) {
-
-    }
-
-    @Override
-    public void conectaEntrada(Editavel entrada) {
-
-    }
-
-    @Override
-    public void desconectaSaida(Editavel saida) {
-
-    }
-
-    @Override
-    public void desconectaEntrada(Editavel entrada) {
-
-    }
-
-    @Override
-    public void calcula() {
-
-    }
-
-    @Override
-    public Sinal pegaValor() {
-        return null;
     }
 
     public int diametro() {
