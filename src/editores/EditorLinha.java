@@ -16,6 +16,19 @@ public class EditorLinha implements Editor {
         this.quadro = quadro;
     }
 
+    private boolean verificaClique(Circulo circ, int x, int y) {
+        boolean match = false;
+        int margin = 5;
+        for(int xVerify=x-margin; xVerify <= (x+margin); xVerify++) {
+            for(int yVerify=y-margin; yVerify <= (y+margin); yVerify++) {
+                if(match) {
+                    break;
+                }
+                match = circ.contemPonto(xVerify, yVerify);
+            }
+        }
+        return match;
+    }
     public void clique(int x, int y) {
         Circulo circulo = null;
         Reproduzivel figura = this.quadro.pegaObjetoEm(x, y);
@@ -29,7 +42,7 @@ public class EditorLinha implements Editor {
                 PortaLogica porta = (PortaLogica) figura;
                 Saida[] saidas = porta.pegaSaidas();
                 for (int i = 0; i < saidas.length; i++) {
-                    if (saidas[i].contemPonto(x, y)) {
+                    if (this.verificaClique(saidas[i], x, y)) {
                         circulo = saidas[i];
                         break;
                     }
@@ -44,7 +57,7 @@ public class EditorLinha implements Editor {
                 Linha novaLinha = (Linha) figura;
                 Circulo[] pontos = novaLinha.pontos();
                 for (int i = 0; i < pontos.length; i++) {
-                    if (pontos[i].contemPonto(x, y)) {
+                    if (this.verificaClique(pontos[i], x, y)) {
                         circulo = pontos[i];
                         break;
                     }
@@ -61,7 +74,7 @@ public class EditorLinha implements Editor {
                 PortaLogica porta = (PortaLogica) figura;
                 Entrada[] entradas = porta.pegaEntradas();
                 for (int i = 0; i < entradas.length; i++) {
-                    if (entradas[i].contemPonto(x, y)) {
+                    if (this.verificaClique(entradas[i], x, y)) {
                         circulo = entradas[i];
                         break;
                     }
@@ -81,7 +94,7 @@ public class EditorLinha implements Editor {
                 Linha linhaSelecionada = (Linha) figura;
                 Circulo[] pontos = linhaSelecionada.pontos();
                 for (int i = 0; i < pontos.length; i++) {
-                    if (pontos[i].contemPonto(x, y)) {
+                    if (this.verificaClique(pontos[i], x, y)) {
                         circulo = pontos[i];
                         break;
                     }

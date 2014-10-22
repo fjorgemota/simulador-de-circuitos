@@ -16,7 +16,7 @@ public class Botao extends PortaLogica
 
     public Saida[] pegaSaidas() {
         Saida[] saidasAnd = new Saida[1];
-        saidasAnd[0] = new Saida(this, 10, 10, 10);
+        saidasAnd[0] = new Saida(this, 10, 10, 5);
         return saidasAnd;
     }
 

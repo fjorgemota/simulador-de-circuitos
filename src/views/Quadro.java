@@ -16,10 +16,25 @@ public class Quadro extends JPanel {
         this.fig.remove(fig);
     }
 
+    private boolean verificaObjetoEm(Reproduzivel obj, int x, int y) {
+        boolean match = false;
+        int margin = 10;
+        for(int xVerify=x-margin; xVerify <= (x+margin); xVerify++) {
+            for(int yVerify=y-margin; yVerify <= (y+margin); yVerify++) {
+                if(match) {
+                    break;
+                }
+                match = obj.contemPonto(xVerify, yVerify);
+            }
+        }
+        return match;
+    }
+
     public Reproduzivel pegaObjetoEm(int x, int y) {
         for (int i = 0; i < fig.size(); i++) {
-            if (fig.get(i).contemPonto(x, y)) {
-                return fig.get(i);
+            Reproduzivel obj = fig.get(i);
+            if (this.verificaObjetoEm(obj, x, y)) {
+                return obj;
             }
         }
         return null;

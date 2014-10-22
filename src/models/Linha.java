@@ -11,7 +11,7 @@ public class Linha implements Editavel {
     private Circulo pontoSelecionado = null; // Guarda o ponto selecionado da linha. Ver se ha melhor forma de fazer isso.
     protected List<Editavel> entradas = new ArrayList<Editavel>();
     protected List<Editavel> saidas = new ArrayList<Editavel>();
-    protected Sinal valor;
+    protected Sinal valor = Sinal.DESATIVADO;
 
     public void apaga() {
         for(Editavel entrada: entradas) {

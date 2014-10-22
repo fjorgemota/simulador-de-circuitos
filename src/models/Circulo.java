@@ -24,7 +24,10 @@ public class Circulo extends Ponto {
     }
 
     public boolean contemPonto(int x, int y) {
-        return this.x0() <= x && (this.x0() + this.diametro()) >= x && this.y0() <= y && (this.y0() + this.diametro()) >= y;
+        int x0 = this.x0();
+        int y0 = this.y0();
+        int diametro = this.diametro();
+        return x0 <= x && (x0 + diametro) >= x && y0 <= y && (y0 + diametro) >= y;
     }
 
     // Seleciona o retangulo

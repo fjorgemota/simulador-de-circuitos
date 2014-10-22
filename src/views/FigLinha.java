@@ -10,7 +10,7 @@ public class FigLinha extends Linha implements Reproduzivel {
         int[] x = x();
         int[] y = y();
         if (this.valor == Sinal.ATIVADO) {
-            g.setColor(Color.DARK_GRAY);
+            g.setColor(Color.YELLOW);
         } else {
             g.setColor(Color.LIGHT_GRAY);
         }

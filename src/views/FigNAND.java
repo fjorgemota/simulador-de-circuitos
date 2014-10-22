@@ -30,13 +30,17 @@ public class FigNAND extends NAND implements Reproduzivel {
             g.fillOval(entradas[i].x0(), entradas[i].y0(), entradas[i].diametro(), entradas[i].diametro());
         }
         if (this.valor == Sinal.ATIVADO) {
-            g.setColor(Color.DARK_GRAY);
+            g.setColor(Color.YELLOW);
+            for (int i = 0; i < saidas.length; i++) {
+                g.fillOval(saidas[i].x0(), saidas[i].y0(), saidas[i].diametro(), saidas[i].diametro());
+            }
         } else {
-            g.setColor(Color.LIGHT_GRAY);
+            g.setColor(Color.BLACK);
+            for (int i = 0; i < saidas.length; i++) {
+                g.drawOval(saidas[i].x0(), saidas[i].y0(), saidas[i].diametro(), saidas[i].diametro());
+            }
         }
-        for (int i = 0; i < saidas.length; i++) {
-            g.fillOval(saidas[i].x0(), saidas[i].y0(), saidas[i].diametro(), saidas[i].diametro());
-        }
+
         g.setColor(Color.BLACK);
     }
 }

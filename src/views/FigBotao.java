@@ -18,11 +18,12 @@ public class FigBotao extends Botao implements Reproduzivel {
 
         g.drawRect(this.x(), this.y(), this.largura(), this.altura());
         if (this.valor == Sinal.ATIVADO) {
-            g.setColor(Color.DARK_GRAY);
+            g.setColor(Color.YELLOW);
+            g.fillOval(this.x(), this.y(), this.largura(), this.altura());
         } else {
-            g.setColor(Color.LIGHT_GRAY);
+            g.setColor(Color.BLACK);
+            g.drawOval(this.x(), this.y(), this.largura(), this.altura());
         }
-        g.fillOval(this.x(), this.y(), this.largura(), this.altura());
         g.setColor(Color.BLACK);
     }
 }
