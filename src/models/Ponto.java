@@ -1,7 +1,11 @@
 package models;
 
-public class Ponto {
+import java.io.Serializable;
+
+public class Ponto implements Serializable {
     private int x, y;
+
+    public Ponto() {}
 
     public Ponto(int x, int y) {
         this.x = x;
@@ -53,24 +57,29 @@ public class Ponto {
 
     int xesq(Ponto q) {
         int x0 = this.x;
-        if(q.x < x0) return q.x;
+        if (q.x < x0) return q.x;
         return x0;
     }
 
     int ysup(Ponto q) {
         int y0 = this.y;
-        if(q.y < y0) return q.y;
+        if (q.y < y0) return q.y;
         return y0;
     }
 
-    int x(){ return x; }
-    int y(){ return y; }
+    int x() {
+        return x;
+    }
 
-    int x0(int raio){
+    int y() {
+        return y;
+    }
+
+    int x0(int raio) {
         return x - raio;
     }
 
-    int y0(int raio){
+    int y0(int raio) {
         return y - raio;
     }
 }
