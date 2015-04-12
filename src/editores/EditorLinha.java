@@ -2,101 +2,120 @@ package editores;
 
 import models.*;
 import views.FigLinha;
-import views.Modo;
 import views.Quadro;
 import views.Reproduzivel;
 
 import javax.swing.*;
 
-public class EditorLinha implements Editor{
+public class EditorLinha implements Editor {
     private Quadro quadro;
     private FigLinha linha;
     private int nEstado = 0;
+
     public EditorLinha(Quadro quadro) {
         this.quadro = quadro;
     }
 
-    public void clique(int x, int y){
+    private boolean verificaClique(Circulo circ, int x, int y) {
+        boolean match = false;
+        int margin = 5;
+        for(int xVerify=x-margin; xVerify <= (x+margin); xVerify++) {
+            for(int yVerify=y-margin; yVerify <= (y+margin); yVerify++) {
+                if(match) {
+                    break;
+                }
+                match = circ.contemPonto(xVerify, yVerify);
+            }
+        }
+        return match;
+    }
+    public boolean clique(int x, int y) {
         Circulo circulo = null;
         Reproduzivel figura = this.quadro.pegaObjetoEm(x, y);
-        if(nEstado == 0) {
+        if (nEstado == 0) {
             linha = new FigLinha();
             this.quadro.addFig(linha);
-            if(figura == null) {
+            if (figura == null) {
                 JOptionPane.showMessageDialog(null, "Selecione um ponto em um conector ou saida em uma porta logica!");
-                return;
-            }
-            else if (figura instanceof PortaLogica) { // Se o objeto selecionado for uma PortaLogica...
+                return false;
+            } else if (figura instanceof PortaLogica) { // Se o objeto selecionado for uma PortaLogica...
                 PortaLogica porta = (PortaLogica) figura;
                 Saida[] saidas = porta.pegaSaidas();
-                for(int i=0; i < saidas.length; i++){
-                    if(saidas[i].contemPonto(x, y)) {
+                for (int i = 0; i < saidas.length; i++) {
+                    if (this.verificaClique(saidas[i], x, y)) {
                         circulo = saidas[i];
                         break;
                     }
                 }
                 if (circulo == null) {
                     JOptionPane.showMessageDialog(null, "Selecione a saida da porta logica!");
-                    return;
+                    return false;
                 }
-            }
-            else if(figura instanceof Linha) { // Se o objeto selecionado for uma Linha...
-                Linha linha = (Linha) figura;
-                Circulo[] pontos = linha.pontos();
-                for(int i=0; i<pontos.length; i++) {
-                    if(pontos[i].contemPonto(x, y)) {
+                porta.conectaSaida(linha);
+                linha.conectaEntrada(porta);
+            } else if (figura instanceof Linha) { // Se o objeto selecionado for uma Linha...
+                Linha novaLinha = (Linha) figura;
+                Circulo[] pontos = novaLinha.pontos();
+                for (int i = 0; i < pontos.length; i++) {
+                    if (this.verificaClique(pontos[i], x, y)) {
                         circulo = pontos[i];
                         break;
                     }
                 }
+                novaLinha.conectaSaida(linha);
+                linha.conectaEntrada(novaLinha);
             }
             linha.addPonto(circulo);
             nEstado = 1;
-        }
-        else if(nEstado == 1) {
+        } else if (nEstado == 1) {
             if (figura == null) {
                 circulo = new Circulo(x, y, 5);
-            }
-            else if (figura instanceof PortaLogica) {
+            } else if (figura instanceof PortaLogica) {
                 PortaLogica porta = (PortaLogica) figura;
                 Entrada[] entradas = porta.pegaEntradas();
                 for (int i = 0; i < entradas.length; i++) {
-                    if (entradas[i].contemPonto(x, y)) {
+                    if (this.verificaClique(entradas[i], x, y)) {
                         circulo = entradas[i];
                         break;
                     }
                 }
-                if(circulo == null) {
+                if (circulo == null) {
                     JOptionPane.showMessageDialog(null, "Selecione uma entrada se você deseja conectar o cabo a esta porta lógica!");
-                    return;
-                }
-                else if(linha.npontos() > 1) {
-                    nEstado = 0;
-                }
-                else {
+                    return false;
+                } else if (linha.npontos() > 1) {
+                    porta.conectaEntrada(linha);
+                    linha.conectaSaida(porta);
+                    linha.addPonto(circulo);
+                    this.quadro.repaint();
+                    return true;
+                } else {
                     JOptionPane.showMessageDialog(null, "Por favor, adicione pelo menos mais um ponto antes de conectar este cabo diretamente a uma porta lógica!");
-                    return;
+                    return false;
                 }
-            }
-            else if(figura instanceof Linha) {
+
+            } else if (figura instanceof Linha) {
                 Linha linhaSelecionada = (Linha) figura;
                 Circulo[] pontos = linhaSelecionada.pontos();
-                for(int i=0; i<pontos.length; i++) {
-                    if(pontos[i].contemPonto(x, y)) {
+                for (int i = 0; i < pontos.length; i++) {
+                    if (this.verificaClique(pontos[i], x, y)) {
                         circulo = pontos[i];
                         break;
                     }
                 }
-                if(linha.npontos() > 1) {
-                    nEstado = 0;
-                }
-                else {
+                if (linha.npontos() > 1) {
+                    linhaSelecionada.conectaEntrada(linha);
+                    linha.conectaSaida(linhaSelecionada);
+                    linha.addPonto(circulo);
+                    this.quadro.repaint();
+                    return true;
+                } else {
                     JOptionPane.showMessageDialog(null, "Por favor, adicione pelo menos mais um ponto antes de conectar este cabo diretamente a uma outro cabo!");
-                    return;
+                    return false;
                 }
             }
             linha.addPonto(circulo);
         }
         this.quadro.repaint();
+        return false;
     }
 }

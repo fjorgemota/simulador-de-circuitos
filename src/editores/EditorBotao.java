@@ -2,17 +2,18 @@ package editores;
 
 import models.Ponto;
 import views.FigAND;
+import views.FigBotao;
 import views.Quadro;
 
-public class EditorAnd extends EditorPortaLogica {
-    public EditorAnd(Quadro quadro) {
+public class EditorBotao extends EditorPortaLogica {
+    public EditorBotao(Quadro quadro) {
         super(quadro);
     }
 
     public boolean clique(int x, int y) {
-        FigAND and = new FigAND(new Ponto(x, y));
-        if (this.continuaInsercao(and)) {
-            this.quadro.addFig(and);
+        FigBotao botao = new FigBotao(new Ponto(x, y));
+        if (this.continuaInsercao(botao)) {
+            this.quadro.addFig(botao);
             this.quadro.repaint();
             return true;
         }

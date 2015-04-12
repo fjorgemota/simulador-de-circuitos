@@ -6,32 +6,31 @@ import java.awt.event.ActionListener;
 public class Modo implements ActionListener {
     public static String
             EDITAR = "EDITAR",
-            CRIAR = "conectar",
-            APAGAR = "APAGAR";
+            CRIAR = "CRIAR";
 
-    public String modoAtual = CRIAR;
+    public String modoAtual = EDITAR;
 
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
         if (comando.equals(EDITAR)) {
             modoAtual = EDITAR;
-        }
-        else if(comando.equals(CRIAR)) {
+        } else if (comando.equals(CRIAR)) {
             modoAtual = CRIAR;
         }
-        else if(comando.equals(APAGAR)){
-        	modoAtual = APAGAR;
-        }
     }
 
-    public boolean estaEditando(){
+    public void setaCriando() {
+        this.modoAtual = CRIAR;
+    }
+    public void setaEditando() {
+        this.modoAtual = EDITAR;
+    }
+
+    public boolean estaEditando() {
         return modoAtual.equals(EDITAR);
     }
-    public boolean estaApagando(){
-        return modoAtual.equals(APAGAR);
-    }
 
-    public boolean estaCriando(){
+    public boolean estaCriando() {
         return modoAtual.equals(CRIAR);
     }
 }
