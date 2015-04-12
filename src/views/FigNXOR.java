@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class FigNXOR extends NXOR implements Reproduzivel {
     public FigNXOR(Ponto superiorEsquerdo) {
@@ -17,7 +18,9 @@ public class FigNXOR extends NXOR implements Reproduzivel {
     public void reproduzir(Graphics g) {
         BufferedImage image;
         try {
-            image = ImageIO.read(new File("imagens/nxor.png"));
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("imagens/not.png");
+            image = ImageIO.read(input);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar imagem: imagens/xor.png");
             return;

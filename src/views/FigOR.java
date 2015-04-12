@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class FigOR extends OR implements Reproduzivel {
     public FigOR(Ponto superiorEsquerdo) {
@@ -17,7 +18,9 @@ public class FigOR extends OR implements Reproduzivel {
     public void reproduzir(Graphics g) {
         BufferedImage image;
         try {
-            image = ImageIO.read(new File("imagens/or.png"));
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("imagens/or.png");
+            image = ImageIO.read(input);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar imagem: imagens/or.png");
             return;

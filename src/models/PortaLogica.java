@@ -11,6 +11,7 @@ public abstract class PortaLogica extends Retangulo implements Editavel {
     protected List<Editavel> saidas = new ArrayList<Editavel>();
     protected Sinal valor;
 
+
     protected PortaLogica(Ponto superiorEsquerdo) {
         super(superiorEsquerdo);
         this.centralizaClique();

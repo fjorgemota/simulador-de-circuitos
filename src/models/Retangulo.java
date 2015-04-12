@@ -1,8 +1,11 @@
 package models;
 
-public class Retangulo {
+import java.io.Serializable;
+
+public class Retangulo implements Serializable {
     private Ponto ponto1, ponto2;
     private int xSel, ySel; // Usados para guardar o x e y selecionados. Ver se ha melhor forma de fazer isso.
+    public Retangulo() {}
 
     public Retangulo(Ponto ponto1, Ponto ponto2) {
         this.ponto1 = ponto1;
@@ -48,6 +51,14 @@ public class Retangulo {
     public void selecionaPonto(int x, int y) {
         this.xSel = x - this.x();
         this.ySel = y - this.y();
+    }
+
+    public int getXSel() {
+        return this.xSel + this.x();
+    }
+
+    public int getYSel() {
+        return this.ySel + this.y();
     }
 
     // Move o ponto

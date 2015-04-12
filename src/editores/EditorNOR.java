@@ -10,11 +10,13 @@ public class EditorNOR extends EditorPortaLogica {
         super(quadro);
     }
 
-    public void clique(int x, int y) {
+    public boolean clique(int x, int y) {
         FigNOR nand = new FigNOR(new Ponto(x, y));
         if (this.continuaInsercao(nand)) {
             this.quadro.addFig(nand);
             this.quadro.repaint();
+            return true;
         }
+        return false;
     }
 }

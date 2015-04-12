@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class FigNAND extends NAND implements Reproduzivel {
     public FigNAND(Ponto superiorEsquerdo) {
@@ -17,7 +18,9 @@ public class FigNAND extends NAND implements Reproduzivel {
     public void reproduzir(Graphics g) {
         BufferedImage image;
         try {
-            image = ImageIO.read(new File("imagens/nand.png"));
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("imagens/nand.png");
+            image = ImageIO.read(input);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar imagem: imagens/nand.png");
             return;

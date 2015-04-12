@@ -1,7 +1,11 @@
 package models;
 
-public class Ponto {
+import java.io.Serializable;
+
+public class Ponto implements Serializable {
     private int x, y;
+
+    public Ponto() {}
 
     public Ponto(int x, int y) {
         this.x = x;

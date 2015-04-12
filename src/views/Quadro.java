@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Quadro extends JPanel {
-    private java.util.List<Reproduzivel> fig = new ArrayList<Reproduzivel>();
+    private ArrayList<Reproduzivel> fig = new ArrayList<Reproduzivel>();
 
     public void addFig(Reproduzivel fig) {
         this.fig.add(fig);
@@ -14,6 +14,15 @@ public class Quadro extends JPanel {
     public void removeFig(Reproduzivel fig) {
         fig.apaga();
         this.fig.remove(fig);
+    }
+
+    public ArrayList<Reproduzivel> getFigs() {
+        return fig;
+    }
+
+    public void setFigs(ArrayList<Reproduzivel> figs) {
+        this.fig = figs;
+        this.repaint();
     }
 
     private boolean verificaObjetoEm(Reproduzivel obj, int x, int y) {
@@ -45,8 +54,19 @@ public class Quadro extends JPanel {
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.setColor(Color.BLACK);
+        int maxX = 0;
+        int maxY = 0;
         for (int i = 0; i < fig.size(); i++) {
-            fig.get(i).reproduzir(g);
+            Reproduzivel figure = fig.get(i);
+            figure.reproduzir(g);
+            if (maxX < figure.x()+figure.largura()) {
+                maxX = figure.x()+figure.largura();
+            }
+            if (maxY < figure.y()+figure.altura()) {
+                maxY = figure.y()+figure.altura();
+            }
         }
+        setPreferredSize(new Dimension(maxX+20, maxY+20));
+        this.revalidate();
     }
 }

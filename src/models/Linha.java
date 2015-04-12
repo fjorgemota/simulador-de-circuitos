@@ -70,18 +70,42 @@ public class Linha implements Editavel {
         return this.valor;
     }
 
-    public int[] x() {
-        int[] x = new int[npontos()];
-        for (int i = 0, l = npontos(); i < l; i++) {
-            x[i] = pontos.get(i).x0();
+    public int altura() {
+        int altura = 0;
+        for(Circulo ponto: pontos) {
+            if(altura < ponto.y()+ponto.diametro()) {
+                altura = ponto.y()+ponto.diametro();
+            }
+        }
+        return altura;
+    }
+
+    public int largura() {
+        int largura = 0;
+        for(Circulo ponto: pontos) {
+            if(largura < ponto.x()+ponto.diametro()) {
+                largura = ponto.x()+ponto.diametro();
+            }
+        }
+        return largura;
+    }
+
+    public int x() {
+        int x = Integer.MAX_VALUE;
+        for(Circulo ponto: pontos) {
+            if(x > ponto.x()) {
+                x = ponto.x();
+            }
         }
         return x;
     }
 
-    public int[] y() {
-        int[] y = new int[npontos()];
-        for (int i = 0, l = npontos(); i < l; i++) {
-            y[i] = pontos.get(i).y0();
+    public int y() {
+        int y = Integer.MAX_VALUE;
+        for(Circulo ponto: pontos) {
+            if(y > ponto.y()) {
+                y = ponto.y();
+            }
         }
         return y;
     }
@@ -120,6 +144,14 @@ public class Linha implements Editavel {
                 break;
             }
         }
+    }
+
+    public int getXSel(){
+        return this.pontoSelecionado.getXSel();
+    }
+
+    public int getYSel(){
+        return this.pontoSelecionado.getXSel();
     }
 
     // Move o ponto selecionado

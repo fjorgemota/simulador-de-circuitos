@@ -9,11 +9,13 @@ public class EditorNXOR extends EditorPortaLogica {
         super(quadro);
     }
 
-    public void clique(int x, int y) {
+    public boolean clique(int x, int y) {
         FigNXOR nxor = new FigNXOR(new Ponto(x, y));
         if (this.continuaInsercao(nxor)) {
             this.quadro.addFig(nxor);
             this.quadro.repaint();
+            return true;
         }
+        return false;
     }
 }

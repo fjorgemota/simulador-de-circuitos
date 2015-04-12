@@ -36,6 +36,14 @@ public class Circulo extends Ponto {
         this.ySel = y - this.y0();
     }
 
+    public int getXSel() {
+        return this.xSel + this.x();
+    }
+
+    public int getYSel() {
+        return this.ySel + this.y();
+    }
+
     // Move o ponto
     public void movePara(int x, int y) {
         x -= this.xSel;

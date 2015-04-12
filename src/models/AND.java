@@ -26,6 +26,10 @@ public class AND extends PortaLogica {
     public void calcula() {
         Sinal oldValor = this.valor;
         this.valor = this.entradas.isEmpty() ? Sinal.DESATIVADO : Sinal.ATIVADO;
+        if (this.entradas.size() == 1) {
+            this.valor = Sinal.DESATIVADO;
+            return;
+        }
         for(Editavel entrada: this.entradas) {
             if (entrada.pegaValor() == Sinal.DESATIVADO) {
                 this.valor = Sinal.DESATIVADO;

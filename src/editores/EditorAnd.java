@@ -9,11 +9,13 @@ public class EditorAnd extends EditorPortaLogica {
         super(quadro);
     }
 
-    public void clique(int x, int y) {
+    public boolean clique(int x, int y) {
         FigAND and = new FigAND(new Ponto(x, y));
         if (this.continuaInsercao(and)) {
             this.quadro.addFig(and);
             this.quadro.repaint();
+            return true;
         }
+        return false;
     }
 }

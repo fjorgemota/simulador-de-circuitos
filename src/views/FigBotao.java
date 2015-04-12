@@ -15,7 +15,6 @@ public class FigBotao extends Botao implements Reproduzivel {
     }
 
     public void reproduzir(Graphics g) {
-
         g.drawRect(this.x(), this.y(), this.largura(), this.altura());
         if (this.valor == Sinal.ATIVADO) {
             g.setColor(Color.YELLOW);

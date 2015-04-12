@@ -29,7 +29,7 @@ public class EditorLinha implements Editor {
         }
         return match;
     }
-    public void clique(int x, int y) {
+    public boolean clique(int x, int y) {
         Circulo circulo = null;
         Reproduzivel figura = this.quadro.pegaObjetoEm(x, y);
         if (nEstado == 0) {
@@ -37,7 +37,7 @@ public class EditorLinha implements Editor {
             this.quadro.addFig(linha);
             if (figura == null) {
                 JOptionPane.showMessageDialog(null, "Selecione um ponto em um conector ou saida em uma porta logica!");
-                return;
+                return false;
             } else if (figura instanceof PortaLogica) { // Se o objeto selecionado for uma PortaLogica...
                 PortaLogica porta = (PortaLogica) figura;
                 Saida[] saidas = porta.pegaSaidas();
@@ -49,7 +49,7 @@ public class EditorLinha implements Editor {
                 }
                 if (circulo == null) {
                     JOptionPane.showMessageDialog(null, "Selecione a saida da porta logica!");
-                    return;
+                    return false;
                 }
                 porta.conectaSaida(linha);
                 linha.conectaEntrada(porta);
@@ -81,15 +81,18 @@ public class EditorLinha implements Editor {
                 }
                 if (circulo == null) {
                     JOptionPane.showMessageDialog(null, "Selecione uma entrada se você deseja conectar o cabo a esta porta lógica!");
-                    return;
+                    return false;
                 } else if (linha.npontos() > 1) {
                     porta.conectaEntrada(linha);
                     linha.conectaSaida(porta);
-                    nEstado = 0;
+                    linha.addPonto(circulo);
+                    this.quadro.repaint();
+                    return true;
                 } else {
                     JOptionPane.showMessageDialog(null, "Por favor, adicione pelo menos mais um ponto antes de conectar este cabo diretamente a uma porta lógica!");
-                    return;
+                    return false;
                 }
+
             } else if (figura instanceof Linha) {
                 Linha linhaSelecionada = (Linha) figura;
                 Circulo[] pontos = linhaSelecionada.pontos();
@@ -102,14 +105,17 @@ public class EditorLinha implements Editor {
                 if (linha.npontos() > 1) {
                     linhaSelecionada.conectaEntrada(linha);
                     linha.conectaSaida(linhaSelecionada);
-                    nEstado = 0;
+                    linha.addPonto(circulo);
+                    this.quadro.repaint();
+                    return true;
                 } else {
                     JOptionPane.showMessageDialog(null, "Por favor, adicione pelo menos mais um ponto antes de conectar este cabo diretamente a uma outro cabo!");
-                    return;
+                    return false;
                 }
             }
             linha.addPonto(circulo);
         }
         this.quadro.repaint();
+        return false;
     }
 }

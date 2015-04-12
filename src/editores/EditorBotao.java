@@ -10,11 +10,13 @@ public class EditorBotao extends EditorPortaLogica {
         super(quadro);
     }
 
-    public void clique(int x, int y) {
+    public boolean clique(int x, int y) {
         FigBotao botao = new FigBotao(new Ponto(x, y));
         if (this.continuaInsercao(botao)) {
             this.quadro.addFig(botao);
             this.quadro.repaint();
+            return true;
         }
+        return false;
     }
 }

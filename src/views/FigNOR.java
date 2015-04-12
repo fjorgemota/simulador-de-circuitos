@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class FigNOR extends NOR implements Reproduzivel {
     public FigNOR(Ponto superiorEsquerdo) {
@@ -17,7 +18,9 @@ public class FigNOR extends NOR implements Reproduzivel {
     public void reproduzir(Graphics g) {
         BufferedImage image;
         try {
-            image = ImageIO.read(new File("imagens/nor.png"));
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("imagens/nor.png");
+            image = ImageIO.read(input);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar imagem: imagens/nor.png");
             return;
