@@ -2,12 +2,19 @@
 
 Esse simulador/editor de circuitos está sendo criado para o projeto de Programação Orientada a Objetos II da Universidade Federal de Santa Catarina (UFSC). 
 
-Como tal, ele será disponibilizado como open-source após a avaliação do projeto. (principalmente se o projeto **realmente** for um simulador de circuitos).
+Com ele você pode:
+
+- Criar circuitos de tamanho ilimitado;
+- Abrir/Salvar circuitos em arquivos .sim1;
+- Simular circuitos com suporte à ver o sinal em cada parte do circuito;
+- E muito mais;
+
+E o melhor! O simulador é compatível com Linux, Windows e Mac! ;)
 
 É isso. Divirta-se. 
 
 ## Criadores do projeto ##
 
-* Caique Marques
-* Emmanuel Podestá
-* Fernando Mota
+* [Caique Marques](http://github.com/mrcaique)
+* [Emmanuel Podestá](http://github.com/EPodesta)
+* [Fernando Mota](http://github.com/fjorgemota)
